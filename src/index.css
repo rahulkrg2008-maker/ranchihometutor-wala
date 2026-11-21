@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    max-width: 100%;
+    -webkit-text-size-adjust: 100%;
+    background-color: #bfe2fb;
+    color: #0f172a;
+  }
+
+  html.dark {
+    color-scheme: dark;
+    background-color: #08182b;
+    color: #f1f5f9;
+  }
+
+  body {
+    background: linear-gradient(180deg, #8fd0fb 0%, #bfe4fc 28%, #d9efff 55%, #c3e5fc 80%, #a9d9f8 100%);
+    color: #0f172a;
+    
+  }
+
+  .dark body {
+    background: linear-gradient(180deg, #06142a 0%, #0a2342 55%, #08182b 100%);
+    color: #f1f5f9;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  /* Elegant italic script used for taglines (replaces the marker-pen look) */
+  .font-handwriting {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* Soft rounded "cloud" cards (replaces hard outlines & offset shadows) */
+.structural-border {
+  border: 1.5px solid rgba(8, 126, 209, 0.28);
+}
+.dark .structural-border {
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+}
+
+.structural-card {
+  background-color: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  box-shadow: 0 14px 34px -14px rgba(8, 100, 190, 0.35), 0 2px 6px rgba(8, 100, 190, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.structural-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -14px rgba(8, 100, 190, 0.45), 0 2px 6px rgba(8, 100, 190, 0.1);
+}
+.dark .structural-card {
+  background-color: rgba(13, 34, 61, 0.88);
+  border: 1.5px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.6);
+}
+.dark .structural-card:hover {
+  box-shadow: 0 20px 40px -14px rgba(56, 189, 248, 0.25);
+}
+
+.structural-box {
+  background-color: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  box-shadow: 0 8px 22px -12px rgba(8, 100, 190, 0.35);
+}
+.dark .structural-box {
+  background-color: rgba(13, 34, 61, 0.88);
+  border: 1.5px solid rgba(56, 189, 248, 0.3);
+}
+
+.structural-badge {
+  border: 1px solid rgba(8, 126, 209, 0.3);
+  font-weight: 700;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.85);
+}
+.dark .structural-badge {
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.structural-divider {
+  border-bottom: 1.5px dashed rgba(8, 126, 209, 0.3);
+}
+
+.dark .structural-divider {
+  border-bottom: 2px solid rgba(56, 189, 248, 0.2);
+}
+
+/* Subtle Notebook paper pattern helpers */
+.bg-notebook-grid {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-notebook-grid {
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-notebook-dots {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.14) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+
+.dark .bg-notebook-dots {
+  background-image: radial-gradient(rgba(56, 189, 248, 0.12) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+
+.bg-notebook-lines {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.09) 1px, transparent 1px);
+  background-size: 100% 28px;
+}
+
+.dark .bg-notebook-lines {
+  background-image: linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 100% 28px;
+}
+
+/* Custom scrollbar for pleasant UI in tables and modals */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #e2eaf4;
+}
+::-webkit-scrollbar-thumb {
+  background: #087ed1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #066bb3;
+}
+
+/* Cloud decorations */
+.cloud {
+  position: absolute;
+  pointer-events: none;
+  filter: blur(0.5px);
+}
+@keyframes cloud-drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(26px); }
+}
+.cloud-drift { animation: none; }
+@media (prefers-reduced-motion: reduce) { .cloud-drift { animation: none; } }
+
+/* Section divider glow so content sections read as soft bands over the sky */
+section.relative { isolation: isolate; }
+
+/* Theme switch: no transitions while the class flips => one repaint, no lag */
+html.theme-switching *, html.theme-switching *::before, html.theme-switching *::after { transition: none !important; }
+
+/* Phones: cheap rendering */
+@media (max-width: 768px) {
+  *, *::before, *::after { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .structural-card, .structural-box, .structural-badge { box-shadow: 0 2px 8px rgba(20,80,140,.12) !important; transition: none !important; }
+  .cloud { display: none; }
+}
+
+/* Never let the page slide sideways (this is what made it feel like a dragged photo on phones) */
+html, body, #root { max-width: 100%; overflow-x: clip; }
+body { overscroll-behavior-x: none; }
+section { overflow-x: clip; }
+@media (max-width: 768px) { html { scroll-behavior: auto; } }

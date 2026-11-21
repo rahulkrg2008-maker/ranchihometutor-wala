@@ -1,0 +1,6 @@
+{
+  "name": "Ranchi HomeTutor Wala",
+  "description": "Professional website and admin control center for RanchiHomeTutor home tuition coordination service in Ranchi, Jharkhand.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
